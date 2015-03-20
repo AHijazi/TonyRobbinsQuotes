@@ -1,0 +1,16 @@
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/topics_list"
+    tools:context=".MainActivity$PlaceholderFragment"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:layout_gravity="center_horizontal"
+    android:dividerHeight="15dp"
+    android:footerDividersEnabled="false"
+    android:divider="@android:color/transparent"
+    android:scrollbars="none"
+    >
+
+
+</ListView>

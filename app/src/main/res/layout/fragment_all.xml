@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:orientation= "vertical"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    tools:context=".MainActivity$PlaceholderFragment">
+
+    <GridView
+        android:id="@+id/all_gv"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/section_label"
+        android:numColumns= "1"
+
+        android:horizontalSpacing="15dp"
+        android:verticalSpacing="15dp">
+
+
+
+
+
+   </GridView>
+
+
+</LinearLayout>
