@@ -86,10 +86,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
         c = getActivity().getContentResolver().query(QuoteContract.QuoteEntry.buildQuoteUri(), new String[]{QuoteContract.QuoteEntry._ID, QuoteContract.QuoteEntry.COLUMN_QUOTE_TEXT}, QuoteContract.QuoteEntry.COLUMN_FAVOURITE + " = 1", null, null);
         range = c.getCount();
-        int i3 = r.nextInt(range - 1) + 1;
-        c.moveToPosition(i3);
-        tv2.setText(c.getString(1).replaceAll("\'", ""));
-        id2 = c.getString(0);
+        if (range > 0) {
+            int i3 = r.nextInt(range - 1) + 1;
+            c.moveToPosition(i3);
+            tv2.setText(c.getString(1).replaceAll("\'", ""));
+            id2 = c.getString(0);
+        } else {
+            tv2.setText("Waiting for you to select your favourites!");
+        }
         c.close();
 
         return rootView;
