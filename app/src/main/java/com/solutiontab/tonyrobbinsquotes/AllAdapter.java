@@ -64,7 +64,7 @@ public class AllAdapter extends CursorAdapter {
         if (picStatus == 1) {
             vHolder.mStatus_iv.setVisibility(View.VISIBLE);
         } else {
-
+            vHolder.mStatus_iv.setVisibility(View.INVISIBLE);
         }
 
 

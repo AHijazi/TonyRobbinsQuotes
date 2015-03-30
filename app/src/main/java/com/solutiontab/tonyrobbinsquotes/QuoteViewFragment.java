@@ -75,6 +75,7 @@ public class QuoteViewFragment extends Fragment implements View.OnClickListener 
         tv.setText(quoteString);
 
         if (c.getInt(4) == 0) {
+
             ContentValues cv = new ContentValues();
             cv.put(QuoteContract.QuoteEntry.COLUMN_READ, "1");
             getActivity().getContentResolver().update(QuoteContract.QuoteEntry.buildQuoteUri(), cv, QuoteContract.QuoteEntry._ID + "=" + sqID, null);
@@ -92,10 +93,8 @@ public class QuoteViewFragment extends Fragment implements View.OnClickListener 
         // image naming and path  to include sd card  appending name you choose for file
         String mPath = Environment.getExternalStorageDirectory().toString() + "/" + "quotesapp/";
         LinearLayout vg = (LinearLayout) rootView.findViewById(R.id.quote_layout);
-// create bitmap screen capture
-        // View v = topic_iv.getRootView();
-        vg.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        vg.layout(0, 0, vg.getMeasuredWidth(), vg.getMeasuredHeight());
+//        vg.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+//        vg.layout(0, 0, vg.getMeasuredWidth(), vg.getMeasuredHeight());
         vg.buildDrawingCache(true);
         vg.setDrawingCacheEnabled(true);
         Bitmap bmp = Bitmap.createBitmap(vg.getDrawingCache());
@@ -161,7 +160,7 @@ public class QuoteViewFragment extends Fragment implements View.OnClickListener 
                 shareIntent.setAction(Intent.ACTION_SEND);
                 shareIntent.putExtra(Intent.EXTRA_STREAM, ScreenShotUri);
                 shareIntent.setType("image/jpeg");
-                startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.title_section3)));
+                startActivity(Intent.createChooser(shareIntent, getResources().getText(R.string.share_quote)));
 
 
                 break;

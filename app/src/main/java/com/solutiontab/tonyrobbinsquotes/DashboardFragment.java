@@ -30,7 +30,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     TextView tv2;
     TextView tv3;
     String id1;
-    String id2;
+    String id2 ="";
     String id3;
     /**
      * Returns a new instance of this fragment for the given section
@@ -84,17 +84,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         id3 = c.getString(0);
         c.close();
 
-        c = getActivity().getContentResolver().query(QuoteContract.QuoteEntry.buildQuoteUri(), new String[]{QuoteContract.QuoteEntry._ID, QuoteContract.QuoteEntry.COLUMN_QUOTE_TEXT}, QuoteContract.QuoteEntry.COLUMN_FAVOURITE + " = 1", null, null);
-        range = c.getCount();
+        Cursor  favourite_c = getActivity().getContentResolver().query(QuoteContract.QuoteEntry.buildQuoteUri(), new String[]{QuoteContract.QuoteEntry._ID, QuoteContract.QuoteEntry.COLUMN_QUOTE_TEXT}, QuoteContract.QuoteEntry.COLUMN_FAVOURITE + " = 1", null, null);
+        range = favourite_c.getCount();
         if (range > 0) {
-            int i3 = r.nextInt(range - 1) + 1;
-            c.moveToPosition(i3);
-            tv2.setText(c.getString(1).replaceAll("\'", ""));
-            id2 = c.getString(0);
+            int i3 = r.nextInt((range - 1) + 1) ;
+            favourite_c.moveToPosition(i3);
+            tv2.setText(favourite_c.getString(1).replaceAll("\'", ""));
+            id2 = favourite_c.getString(0);
         } else {
             tv2.setText("Waiting for you to select your favourites!");
         }
-        c.close();
+        favourite_c.close();
 
         return rootView;
     }
@@ -113,16 +113,19 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.dblayout1:
                 i.putExtra("qID", id1);
+                    startActivity(i);
+
                 break;
             case R.id.dblayout2:
                 i.putExtra("qID", id2);
+                if (!id2.equals("")) {
+                    startActivity(i);
+                }
                 break;
             case R.id.dblayout3:
                 i.putExtra("qID", id3);
+                    startActivity(i);
                 break;
         }
-
-
-        startActivity(i);
     }
 }
